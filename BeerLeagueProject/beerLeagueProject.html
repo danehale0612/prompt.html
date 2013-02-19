@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+
+
+</head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="css/beerLeagueProject.css" rel="stylesheet">
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+	$(function() {
+$('form').submit(function() {
+  console.log($('form').serializeObject());
+  return false;
+});
+// $(function() {
+//     $('form').submit(function() {
+//         $('#result').text(JSON.stringify($('form').serializeObject()));
+//         return false;
+    });
+var teamInfo = document.forms["addTeam"].teamName.length;
+for (var i = 0; i < teamInfo; i++) {
+    			var newelement = document.createElement("p");
+                  document.getElementById("show").appendChild(newelement);
+                  newelement.appendChild(document.createTextNode(document.forms["addTeam"].teamName.value));
+              }
+
+
+}); //End of doc.ready
+
+</script>
+
+<body>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="span12 box">
+				<h1>Beer and Veggie Dogs? League</h1>
+				<h3>Standings</h3>
+			</div>
+		</div> <!--end of row -->
+
+		<div class ="row displayLeague">
+			<div class="span6 box">
+				<table class="table table-striped">
+					<tr>
+						<td>Team</td>
+						<td>W</td>
+						<td>L</td>
+						<td>%</td>
+					</tr>
+
+				</table>
+			</div>
+		</div> <!-- End of row -->
+		<a href="#myModal" role="button" class="btn" data-toggle="modal">Add New Team</a>
+
+		<!-- <p><b>Results:</b> <span id="results"></span></p> -->
+ 
+				<!-- Modal -->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				    <h3 id="myModalLabel">Team Info:</h3>
+				  </div>
+				  <div class="modal-body">
+
+
+
+				  	<form id="addTeam">
+				    <table class="table">
+
+					 <tr><td><label for="getTeamName">Team Name:</label>
+					  <input id="getTeamName" type="text" name="teamName"></tr></td>
+
+					  <tr><td><h5 id="managerInfoTitle">Manager Info:</h5></tr></td>
+
+					  <tr><td><label for="getManagerFirstName" id ="managerFirstName">First Name:</label>
+					  <input id="getManagerFirstName" type="text" name="managerFirstName"></tr></td>
+
+					  <tr><td><label for="getManagerLastName" id="managerLastName">Last Name:</label>
+					  <input id="getManagerLastName" type="text" name="managerLastName"></tr></td>
+
+					  <tr><td><label for="getPhoneNumber">Phone Number:</label>
+					  <input id="getPhoneNumber" type="text" name="phoneNumber"></tr></td>
+
+					  <tr><td><label for="getSponsor">Sponsor:</label>
+					  <input id="getSponsor" type="text" name="sponsor"></tr></td>
+
+					  <tr><td><label for="getZipCode">Zip Code:</label>
+					  <input id="getZipCode" type="text" name="zipCode"></tr></td>
+
+					  <tr><td><input type="submit" id="submitData" value="Save"></tr></td>
+					  	</table>
+					</form>
+
+					
+				  <!-- <div class="modal-footer">
+				    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				    <button class="btn btn-primary">Save changes</button> -->
+				  </div>
+				</div>
+
+
+
+
+
+
+		<div class="row">
+			<div id="show" class="span12 box">
+		
+			
+	</div>
+	</div> <!--end of row-->
+
+
+
+	</div> <!-- End of container -->
+</body>
+</html>
